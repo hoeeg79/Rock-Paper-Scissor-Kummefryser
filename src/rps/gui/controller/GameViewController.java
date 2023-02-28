@@ -13,12 +13,17 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.List;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 
-import java.net.URL;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.Text;
+import rps.bll.game.GameManager;
+import rps.bll.game.Move;
+import rps.bll.game.Result;
+import rps.bll.game.ResultType;
+import rps.bll.player.IPlayer;
+import rps.bll.player.Player;
+import rps.bll.player.PlayerType;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -46,27 +51,39 @@ public class GameViewController implements Initializable {
     private Image rockBotR20 = new Image("RockBotR20.png");
     private Image paperBot = new Image("paperBot.png");
     private Image scissorBot = new Image("ScissorBot.png");
+    private String playerName = "";
+
+    IPlayer human = new Player(playerName, PlayerType.Human);
+    IPlayer bot = new Player("Kummefryser Bot 3000", PlayerType.AI);
+    private GameManager gm = new GameManager(human, bot);
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        getUserName();
+        String playerName = getUserName();
     }
     @FXML
     private void handleRock(ActionEvent actionEvent) {
+        gm.playRound(Move.Rock);
+
+        gm.getGameState().getHistoricResults().forEach((result) -> {
+            System.out.println(getResultAsString(result));
+        });
         climax(rockPlayer, scissorBot);
     }
 
     @FXML
-    private void handlePaper(ActionEvent actionEvent) {
+    private String handlePaper(ActionEvent actionEvent) {
         climax(paperPlayer, rockBot);
+        return "Paper";
     }
 
     @FXML
-    private void handleScissor(ActionEvent actionEvent) {
+    private String handleScissor(ActionEvent actionEvent) {
         climax(scissorPlayer, paperBot);
+        return "Scissor";
     }
 
     private void climax(Image chosenPlay, Image botPlay){
@@ -87,12 +104,32 @@ public class GameViewController implements Initializable {
         timeline.play();
     }
 
-    private void getUserName(){
+    private String getUserName(){
         TextInputDialog getPlayerName = new TextInputDialog();
         getPlayerName.setTitle("Choose Name");
         getPlayerName.setHeaderText("Please enter your name:");
         getPlayerName.setContentText("Name:");
         Optional<String> result = getPlayerName.showAndWait();
+<<<<<<< Updated upstream
         txtPlayer.setText(result.get());
+=======
+        if(!result.get().isEmpty()){
+            txtPlayer.setText(result.get());
+            return result.get();
+        }else{
+            txtPlayer.setText("Spejderen");
+            return "Spejderen";
+        }
+>>>>>>> Stashed changes
+    }
+
+    public String getResultAsString(Result result) {
+        String statusText = result.getType() == ResultType.Win ? "wins over " : "ties ";
+
+        return "Round #" + result.getRoundNumber() + ":" +
+                result.getWinnerPlayer().getPlayerName() +
+                " (" + result.getWinnerMove() + ") " +
+                statusText + result.getLoserPlayer().getPlayerName() +
+                " (" + result.getLoserMove() + ")!";
     }
 }
