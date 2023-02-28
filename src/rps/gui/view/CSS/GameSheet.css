@@ -1,7 +1,7 @@
 
 #btnRock
 {
-    -fx-background-image: url("/RockPlayerOne.png");
+    -fx-background-image: url("/RockPlayer.png");
     -fx-background-color: transparent;
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
@@ -18,7 +18,7 @@
 
 #btnPaper
 {
-    -fx-background-image: url("/PaperPlayerOne.png");
+    -fx-background-image: url("/PaperPlayer.png");
     -fx-background-color: transparent;
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
@@ -37,7 +37,7 @@
 
 #btnScissor
 {
-    -fx-background-image: url("/ScissorPlayerOne.png");
+    -fx-background-image: url("/ScissorPlayer.png");
     -fx-background-color: transparent;
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;

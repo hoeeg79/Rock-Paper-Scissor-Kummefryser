@@ -45,6 +45,7 @@ public class GameViewController implements Initializable {
     private Image rockBotR10 = new Image("RockBotR10.png");
     private Image rockBotR20 = new Image("RockBotR20.png");
     private Image paperBot = new Image("PaperBot.png");
+
     private Image scissorBot = new Image("ScissorBot.png");
 
     /**
@@ -56,28 +57,25 @@ public class GameViewController implements Initializable {
     }
     @FXML
     private void handleRock(ActionEvent actionEvent) {
-        climax();
-        playerImage.setImage(rockPlayer);
+        climax(rockPlayer, scissorBot);
     }
 
     @FXML
     private void handlePaper(ActionEvent actionEvent) {
-        climax();
-        playerImage.setImage(paperPlayer);
+        climax(paperPlayer, rockBot);
     }
 
     @FXML
     private void handleScissor(ActionEvent actionEvent) {
-        climax();
-        playerImage.setImage(scissorPlayer);
+        climax(scissorPlayer, paperBot);
     }
 
-    private void climax(){
+    private void climax(Image chosenPlay, Image botPlay){
 
         Timeline timeline = new Timeline();
-        List<Image> playerImages = List.of(rockPlayer, rockPlayerR10, rockPlayerR20, rockPlayerR10, rockPlayer);
-        List<Image> botImages = List.of(rockBot, rockBotR10, rockBotR20, rockBotR10, rockBot);
-        for (int i = 0; i < 4; i++){
+        List<Image> playerImages = List.of(rockPlayer, rockPlayerR10, rockPlayerR20, rockPlayerR10, chosenPlay);
+        List<Image> botImages = List.of(rockBot, rockBotR10, rockBotR20, rockBotR10, botPlay);
+        for (int i = 0; i < 5; i++){
             timeline.getKeyFrames().add(
                     new KeyFrame(
                             Duration.millis(i * 200),
