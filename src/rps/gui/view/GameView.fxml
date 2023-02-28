@@ -11,7 +11,7 @@
    <children>
       <HBox layoutX="200.0" layoutY="277.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0" text="Rock" />
+            <Button id="btnRock" mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0" text="Rock" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePaper" prefHeight="150.0" prefWidth="230.0" text="Paper">
                <HBox.margin>
                   <Insets left="5.0" />
