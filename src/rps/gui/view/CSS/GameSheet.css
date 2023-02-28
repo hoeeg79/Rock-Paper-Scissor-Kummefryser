@@ -1,4 +1,40 @@
+.anchorPane
+{
+    -fx-background-image: url("Lurendrejeren.png");
+    -fx-background-color: transparent;
+}
+
 #btnRock
 {
-    -fx-background-image: ;
+    -fx-background-image: url("/RockPlayerOne.png");
+    -fx-background-color: transparent;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: #c7c7c7;
+    -fx-border-radius: 15;
+}
+
+#btnPaper
+{
+    -fx-background-image: url("/PaperPlayerOne.png");
+    -fx-background-color: transparent;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: #c7c7c7;
+    -fx-background-radius: 20;
+    -fx-border-radius: 15;
+}
+
+#btnScissor
+{
+    -fx-background-image: url("/ScissorPlayerOne.png");
+    -fx-background-color: transparent;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: #c7c7c7;
+    -fx-background-radius: 20;
+    -fx-border-radius: 15;
 }
