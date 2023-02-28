@@ -24,8 +24,8 @@
             </Button>
          </children>
       </HBox>
-      <ImageView fitHeight="260.0" fitWidth="330.0" layoutX="50.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="50.0" />
-      <ImageView fitHeight="260.0" fitWidth="330.0" layoutX="550.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="50.0" />
+      <ImageView fx:id="playerImage" fitHeight="260.0" fitWidth="330.0" layoutX="50.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="50.0" />
+      <ImageView fx:id="botImage" fitHeight="260.0" fitWidth="330.0" layoutX="550.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="50.0" />
       <Text layoutX="194.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
       <Text layoutX="521.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kummefryser Bot 3000" />
    </children>
