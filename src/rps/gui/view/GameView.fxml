@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rps.gui.controller.GameViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rps.gui.controller.GameViewController" stylesheets="@CSS/GameSheet.css">
    <children>
       <HBox layoutX="200.0" layoutY="277.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
          <children>
-            <Button id="btnRock" mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0" text="Rock" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePaper" prefHeight="150.0" prefWidth="230.0" text="Paper">
+            <Button id="btnRock" mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0"/>
+            <Button id="btnPaper" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePaper" prefHeight="150.0" prefWidth="230.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleScissor" prefHeight="150.0" prefWidth="230.0" text="Scissor">
+            <Button id="btnScissor" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleScissor" prefHeight="150.0" prefWidth="230.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -26,7 +26,7 @@
       </HBox>
       <ImageView fx:id="playerImage" fitHeight="260.0" fitWidth="330.0" layoutX="50.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="50.0" />
       <ImageView fx:id="botImage" fitHeight="260.0" fitWidth="330.0" layoutX="550.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="50.0" />
-      <Text layoutX="194.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
+      <Text fx:id="txtPlayer" layoutX="194.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
       <Text layoutX="521.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kummefryser Bot 3000" />
    </children>
 </AnchorPane>

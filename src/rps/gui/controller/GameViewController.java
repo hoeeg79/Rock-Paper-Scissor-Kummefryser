@@ -13,6 +13,13 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.List;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+
+import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -21,6 +28,8 @@ import java.util.ResourceBundle;
  */
 public class GameViewController implements Initializable {
 
+    @FXML
+    private Text txtPlayer;
     @FXML
     private ImageView playerImage;
     @FXML
@@ -43,7 +52,7 @@ public class GameViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        getUserName();
     }
     @FXML
     private void handleRock(ActionEvent actionEvent) {
@@ -79,5 +88,14 @@ public class GameViewController implements Initializable {
         }
         timeline.setCycleCount(3);
         timeline.play();
+    }
+
+    private void getUserName(){
+        TextInputDialog getPlayerName = new TextInputDialog();
+        getPlayerName.setTitle("Choose Name");
+        getPlayerName.setHeaderText("Please enter your name:");
+        getPlayerName.setContentText("Name:");
+        Optional<String> result = getPlayerName.showAndWait();
+        txtPlayer.setText(result.get());
     }
 }
