@@ -4,7 +4,6 @@ package rps.gui.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,9 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.List;
+import java.util.*;
 
 import javafx.scene.control.TextInputDialog;
 import rps.bll.game.GameManager;
@@ -26,10 +24,6 @@ import rps.bll.game.ResultType;
 import rps.bll.player.IPlayer;
 import rps.bll.player.Player;
 import rps.bll.player.PlayerType;
-
-import javax.swing.*;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 /**
  *
@@ -158,6 +152,7 @@ public class GameViewController implements Initializable {
                 playerWin();
             }
             enableButtons();
+            clearImageTimer();
         });
         timeline.play();
     }
@@ -197,10 +192,6 @@ public class GameViewController implements Initializable {
         lblWin.setText(String.valueOf(playerWins));
     }
 
-    private void clearView(){
-        playerImage.setImage(transparent);
-    }
-
     private void disableButtons(){
         btnPaper.setDisable(true);
         btnRock.setDisable(true);
@@ -211,5 +202,20 @@ public class GameViewController implements Initializable {
         btnPaper.setDisable(false);
         btnRock.setDisable(false);
         btnScissor.setDisable(false);
+    }
+
+    private void clearImageTimer(){
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask(){
+
+            @Override
+            public void run() {
+                playerImage.setImage(transparent);
+                botImage.setImage(transparent);
+            }
+        };
+        timer.schedule(task, 3000);
+
     }
 }
