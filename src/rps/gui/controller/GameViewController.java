@@ -13,13 +13,19 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.List;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 
-import java.net.URL;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.Text;
+import rps.bll.game.GameManager;
+import rps.bll.game.Move;
+import rps.bll.game.Result;
+import rps.bll.game.ResultType;
+import rps.bll.player.IPlayer;
+import rps.bll.player.Player;
+import rps.bll.player.PlayerType;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -50,27 +56,66 @@ public class GameViewController implements Initializable {
     private Image paperBot = new Image("PaperBot.png");
 
     private Image scissorBot = new Image("ScissorBot.png");
+    private String playerName = "";
+
+    IPlayer human = new Player(playerName, PlayerType.Human);
+    IPlayer bot = new Player("Kummefryser Bot 3000", PlayerType.AI);
+    private GameManager gm = new GameManager(human, bot);
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        getUserName();
+        String playerName = getUserName();
     }
     @FXML
     private void handleRock(ActionEvent actionEvent) {
-        climax(rockPlayer, scissorBot);
+        gm.playRound(Move.Rock);
+        Result result = getLatestResult();
+
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(rockPlayer, paperBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(rockPlayer,scissorBot);
+        }else {
+            climax(rockPlayer, rockBot);
+        }
     }
 
     @FXML
     private void handlePaper(ActionEvent actionEvent) {
-        climax(paperPlayer, rockBot);
+        gm.playRound(Move.Paper);
+        Result result = getLatestResult();
+
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(paperPlayer, scissorBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(paperPlayer,rockBot);
+        }else {
+            climax(paperPlayer, paperBot);
+        }
     }
 
     @FXML
     private void handleScissor(ActionEvent actionEvent) {
-        climax(scissorPlayer, paperBot);
+        gm.playRound(Move.Scissor);
+        Result result = getLatestResult();
+
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(scissorPlayer, rockBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(scissorPlayer,paperBot);
+        }else {
+            climax(scissorPlayer, scissorBot);
+        }
+    }
+
+    private Result getLatestResult(){
+        List<Result> listResult = (List) gm.getGameState().getHistoricResults();
+        Result result = listResult.get(listResult.size() - 1);
+
+        return result;
     }
 
     private void climax(Image chosenPlay, Image botPlay){
@@ -91,20 +136,30 @@ public class GameViewController implements Initializable {
         timeline.play();
     }
 
-    private void getUserName(){
+    private String getUserName(){
         TextInputDialog getPlayerName = new TextInputDialog();
         getPlayerName.setTitle("Choose Name");
         getPlayerName.setHeaderText("Please enter your name:");
         getPlayerName.setContentText("Name:");
         Optional<String> result = getPlayerName.showAndWait();
+        txtPlayer.setText(result.get());
         if(!result.get().isEmpty()){
             txtPlayer.setText(result.get());
+            return result.get();
         }else{
             txtPlayer.setText("Spejderen");
+            return "Spejderen";
         }
     }
 
-    private void win(){
+    public String getResultAsString(Result result) {
+        String statusText = result.getType() == ResultType.Win ? "wins over " : "ties ";
+
+        return "Round #" + result.getRoundNumber() + ":" +
+                result.getWinnerPlayer().getPlayerName() +
+                " (" + result.getWinnerMove() + ") " +
+                statusText + result.getLoserPlayer().getPlayerName() +
+                " (" + result.getLoserMove() + ")!";
 
     }
 }
