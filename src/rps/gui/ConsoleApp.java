@@ -5,6 +5,7 @@ import rps.bll.game.*;
 import rps.bll.player.*;
 
 // Java imports
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -45,8 +46,9 @@ public class ConsoleApp {
                 System.out.println(getResultAsString(result));
             });
         }
-
+        Result results = (Result) ge.getGameState().getHistoricResults();
         if (ge.getGameState().getHistoricResults().size() > 0)
+
             System.out.println("Game stats: ....ehmmmm..not implemented yet...please FIXME");
     }
 

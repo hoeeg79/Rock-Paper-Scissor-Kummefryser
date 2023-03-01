@@ -43,13 +43,14 @@ public class GameViewController implements Initializable {
     private Image rockPlayer = new Image("RockPlayer.png");
     private Image rockPlayerR10 = new Image("RockPlayerR10.png");
     private Image rockPlayerR20 = new Image("RockPlayerR20.png");
-    private Image paperPlayer = new Image("paperPlayer.png");
+    private Image paperPlayer = new Image("PaperPlayer.png");
     private Image scissorPlayer = new Image("ScissorPlayer.png");
 
     private Image rockBot = new Image("RockBot.png");
     private Image rockBotR10 = new Image("RockBotR10.png");
     private Image rockBotR20 = new Image("RockBotR20.png");
-    private Image paperBot = new Image("paperBot.png");
+    private Image paperBot = new Image("PaperBot.png");
+
     private Image scissorBot = new Image("ScissorBot.png");
     private String playerName = "";
 
