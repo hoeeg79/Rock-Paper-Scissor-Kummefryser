@@ -56,8 +56,12 @@
 
 
 #txtPlayer{
+    -fx-font-family: "Comic Sans MS";
     -fx-text-fill: green;
+    -fx-font-size: 30;
 }
 #txtBot{
+    -fx-font-family: "Comic Sans MS";
     -fx-text-fill: yellow;
+    -fx-font-size: 25;
 }
