@@ -69,9 +69,12 @@ public class GameViewController implements Initializable {
     private void handleRock(ActionEvent actionEvent) {
         gm.playRound(Move.Rock);
 
-        gm.getGameState().getHistoricResults().forEach((result) -> {
-            System.out.println(getResultAsString(result));
-        });
+        List<Result> listResult = (List) gm.getGameState().getHistoricResults();
+
+        Result result = listResult.get(listResult.size() - 1);
+
+        if (result.getWinnerPlayer())
+
         climax(rockPlayer, scissorBot);
     }
 
