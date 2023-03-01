@@ -27,8 +27,8 @@
       <ImageView fx:id="playerImage" fitHeight="260.0" fitWidth="330.0" layoutX="50.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="50.0" />
       <ImageView fx:id="botImage" fitHeight="260.0" fitWidth="330.0" layoutX="550.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="50.0" />
       <Label fx:id="lblWin" layoutX="352.0" layoutY="50.0" />
-      <Label fx:id="lblLoss" layoutX="454.0" layoutY="50.0" prefHeight="17.0" prefWidth="1.0" />
+      <Label fx:id="lblBotWn" layoutX="454.0" layoutY="50.0" prefHeight="17.0" prefWidth="1.0" />
       <Label fx:id="txtPlayer" layoutX="166.0" layoutY="59.0" stylesheets="@CSS/GameSheet.css" text="Player 1" />
-      <Label layoutX="557.0" layoutY="59.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
+      <Label fx:id="txtBot" layoutX="557.0" layoutY="59.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
    </children>
 </AnchorPane>

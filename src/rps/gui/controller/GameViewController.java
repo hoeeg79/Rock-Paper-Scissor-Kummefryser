@@ -105,6 +105,6 @@ public class GameViewController implements Initializable {
     }
 
     private void win(){
-        lblWin.
+
     }
 }

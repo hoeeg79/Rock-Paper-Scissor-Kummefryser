@@ -54,6 +54,10 @@
     -fx-border-color: #4b4b4b;
 }
 
-label{
+
+#txtPlayer{
+    -fx-text-fill: green;
+}
+#txtBot{
     -fx-text-fill: yellow;
 }
