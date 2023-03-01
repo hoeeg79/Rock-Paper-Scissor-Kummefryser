@@ -4,14 +4,17 @@ package rps.gui.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.List;
 
@@ -24,6 +27,7 @@ import rps.bll.player.IPlayer;
 import rps.bll.player.Player;
 import rps.bll.player.PlayerType;
 
+import javax.swing.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -33,6 +37,12 @@ import java.util.ResourceBundle;
  */
 public class GameViewController implements Initializable {
 
+    @FXML
+    private Button btnRock;
+    @FXML
+    private Button btnPaper;
+    @FXML
+    private Button btnScissor;
     @FXML
     private Label lblWin;
     @FXML
@@ -77,15 +87,14 @@ public class GameViewController implements Initializable {
     private void handleRock(ActionEvent actionEvent) {
         gm.playRound(Move.Rock);
         Result result = getLatestResult();
+        PlayerType winner = result.getWinnerPlayer().getPlayerType();
 
         if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
-            climax(rockPlayer, paperBot);
-            botWin();
+            climax(rockPlayer, paperBot, winner);
         } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
-            climax(rockPlayer,scissorBot);
-            playerWin();
+            climax(rockPlayer,scissorBot, winner);
         }else {
-            climax(rockPlayer, rockBot);
+            climax(rockPlayer, rockBot, null);
         }
     }
 
@@ -93,15 +102,14 @@ public class GameViewController implements Initializable {
     private void handlePaper(ActionEvent actionEvent) {
         gm.playRound(Move.Paper);
         Result result = getLatestResult();
+        PlayerType winner = result.getWinnerPlayer().getPlayerType();
 
-        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
-            climax(paperPlayer, scissorBot);
-            botWin();
+        if (winner == PlayerType.AI){
+            climax(paperPlayer, scissorBot, winner);
         } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
-            climax(paperPlayer,rockBot);
-            playerWin();
+            climax(paperPlayer,rockBot, winner);
         }else {
-            climax(paperPlayer, paperBot);
+            climax(paperPlayer, paperBot, null);
         }
     }
 
@@ -109,15 +117,14 @@ public class GameViewController implements Initializable {
     private void handleScissor(ActionEvent actionEvent) throws InterruptedException {
         gm.playRound(Move.Scissor);
         Result result = getLatestResult();
+        PlayerType winner = result.getWinnerPlayer().getPlayerType();
 
-        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
-            climax(scissorPlayer, rockBot);
-            botWin();
-        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
-            climax(scissorPlayer,paperBot);
-            playerWin();
+        if (winner == PlayerType.AI){
+            climax(scissorPlayer, rockBot, winner);
+        } else if (winner == PlayerType.Human) {
+            climax(scissorPlayer,paperBot, winner);
         }else {
-            climax(scissorPlayer, scissorBot);
+            climax(scissorPlayer, scissorBot, null);
         }
     }
 
@@ -128,8 +135,8 @@ public class GameViewController implements Initializable {
         return result;
     }
 
-    private void climax(Image chosenPlay, Image botPlay){
-
+    private void climax(Image chosenPlay, Image botPlay, PlayerType winner){
+        disableButtons();
         Timeline timeline = new Timeline();
         List<Image> playerImages = List.of(rockPlayer, rockPlayerR10, rockPlayerR20, rockPlayerR10, chosenPlay);
         List<Image> botImages = List.of(rockBot, rockBotR10, rockBotR20, rockBotR10, botPlay);
@@ -143,6 +150,14 @@ public class GameViewController implements Initializable {
             );
         }
         timeline.setCycleCount(3);
+        timeline.setOnFinished(event -> {
+            if (winner == PlayerType.AI){
+                botWin();
+            } else if (winner == PlayerType.Human) {
+                playerWin();
+            }
+            enableButtons();
+        });
         timeline.play();
     }
 
@@ -180,5 +195,17 @@ public class GameViewController implements Initializable {
     private void playerWin(){
         playerWins++;
         lblWin.setText(String.valueOf(playerWins));
+    }
+
+    private void disableButtons(){
+        btnPaper.setDisable(true);
+        btnRock.setDisable(true);
+        btnScissor.setDisable(true);
+    }
+
+    private void enableButtons(){
+        btnPaper.setDisable(false);
+        btnRock.setDisable(false);
+        btnScissor.setDisable(false);
     }
 }
