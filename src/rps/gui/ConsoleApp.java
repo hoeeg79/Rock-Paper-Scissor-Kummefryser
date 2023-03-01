@@ -6,6 +6,7 @@ import rps.bll.player.*;
 
 // Java imports
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -50,6 +51,33 @@ public class ConsoleApp {
         if (ge.getGameState().getHistoricResults().size() > 0)
 
             System.out.println("Game stats: ....ehmmmm..not implemented yet...please FIXME");
+
+    }
+
+    private int playerWins(IGameState state) {
+        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+        PlayerType player = PlayerType.Human;
+        int winCount = 0;
+        for (Result result:results) {
+            PlayerType playerWinner = result.getWinnerPlayer().getPlayerType();
+            if (Objects.equals(playerWinner, player)) {
+                winCount++;
+            }
+        }
+        return winCount;
+    }
+
+    private int botWins(IGameState state) {
+        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+        PlayerType bot = PlayerType.AI;
+        int winCount = 0;
+        for (Result result:results) {
+            PlayerType botWinner = result.getWinnerPlayer().getPlayerType();
+            if (Objects.equals(botWinner, bot)) {
+                winCount++;
+            }
+        }
+        return winCount;
     }
 
 
