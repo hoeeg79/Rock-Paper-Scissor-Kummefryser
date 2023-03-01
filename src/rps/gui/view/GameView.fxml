@@ -11,13 +11,13 @@
    <children>
       <HBox layoutX="200.0" layoutY="277.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
          <children>
-            <Button fx:id="btnRock" id="btnRock" mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0" />
-            <Button fx:id="btnPaper" id="btnPaper" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePaper" prefHeight="150.0" prefWidth="230.0">
+            <Button id="btnRock" fx:id="btnRock" mnemonicParsing="false" onAction="#handleRock" prefHeight="150.0" prefWidth="230.0" />
+            <Button id="btnPaper" fx:id="btnPaper" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handlePaper" prefHeight="150.0" prefWidth="230.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnScissor" id="btnScissor" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleScissor" prefHeight="150.0" prefWidth="230.0">
+            <Button id="btnScissor" fx:id="btnScissor" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleScissor" prefHeight="150.0" prefWidth="230.0">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
@@ -30,5 +30,6 @@
       <Label fx:id="lblBotWin" layoutX="401.0" layoutY="72.0" prefHeight="17.0" prefWidth="35.0" />
       <Label fx:id="txtPlayer" layoutX="161.0" layoutY="59.0" stylesheets="@CSS/GameSheet.css" text="Player 1" />
       <Label fx:id="txtBot" layoutX="449.0" layoutY="62.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
+      <Label fx:id="lblWinLossTxt" id="lblWinLossTxt" layoutX="233.0" layoutY="268.0" prefHeight="65.0" prefWidth="336.0" AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="268.0" />
    </children>
 </AnchorPane>

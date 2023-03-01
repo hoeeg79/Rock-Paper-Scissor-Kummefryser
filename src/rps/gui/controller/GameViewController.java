@@ -38,6 +38,8 @@ import java.util.ResourceBundle;
 public class GameViewController implements Initializable {
 
     @FXML
+    private Label lblWinLossTxt;
+    @FXML
     private Button btnRock;
     @FXML
     private Button btnPaper;
@@ -153,8 +155,10 @@ public class GameViewController implements Initializable {
         timeline.setOnFinished(event -> {
             if (winner == PlayerType.AI){
                 botWin();
+                lblWinLossTxt.setText("YOU LOSE!");
             } else if (winner == PlayerType.Human) {
                 playerWin();
+                lblWinLossTxt.setText("YOU WIN");
             }
             enableButtons();
         });

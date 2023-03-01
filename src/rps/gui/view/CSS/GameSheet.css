@@ -55,7 +55,8 @@
 }
 
 
-#txtPlayer{
+#txtPlayer
+{
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: green;
     -fx-font-size: 30;
@@ -64,4 +65,11 @@
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: yellow;
     -fx-font-size: 30;
+}
+#lblWinLossTxt
+{
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: yellow;
+    -fx-font-size: 50;
+    -fx-text-alignment: center;
 }
