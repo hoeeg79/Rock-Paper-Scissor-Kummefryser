@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.List;
 
 import javafx.scene.control.TextInputDialog;
@@ -68,26 +69,50 @@ public class GameViewController implements Initializable {
     @FXML
     private void handleRock(ActionEvent actionEvent) {
         gm.playRound(Move.Rock);
+        Result result = getLatestResult();
 
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(rockPlayer, paperBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(rockPlayer,scissorBot);
+        }else {
+            climax(rockPlayer, rockBot);
+        }
+    }
+
+    @FXML
+    private void handlePaper(ActionEvent actionEvent) {
+        gm.playRound(Move.Paper);
+        Result result = getLatestResult();
+
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(paperPlayer, scissorBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(paperPlayer,rockBot);
+        }else {
+            climax(paperPlayer, paperBot);
+        }
+    }
+
+    @FXML
+    private void handleScissor(ActionEvent actionEvent) {
+        gm.playRound(Move.Scissor);
+        Result result = getLatestResult();
+
+        if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
+            climax(scissorPlayer, rockBot);
+        } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            climax(scissorPlayer,paperBot);
+        }else {
+            climax(scissorPlayer, scissorBot);
+        }
+    }
+
+    private Result getLatestResult(){
         List<Result> listResult = (List) gm.getGameState().getHistoricResults();
-
         Result result = listResult.get(listResult.size() - 1);
 
-        if (result.getWinnerPlayer())
-
-        climax(rockPlayer, scissorBot);
-    }
-
-    @FXML
-    private String handlePaper(ActionEvent actionEvent) {
-        climax(paperPlayer, rockBot);
-        return "Paper";
-    }
-
-    @FXML
-    private String handleScissor(ActionEvent actionEvent) {
-        climax(scissorPlayer, paperBot);
-        return "Scissor";
+        return result;
     }
 
     private void climax(Image chosenPlay, Image botPlay){
