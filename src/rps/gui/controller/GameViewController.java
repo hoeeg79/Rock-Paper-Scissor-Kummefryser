@@ -110,9 +110,7 @@ public class GameViewController implements Initializable {
         getPlayerName.setHeaderText("Please enter your name:");
         getPlayerName.setContentText("Name:");
         Optional<String> result = getPlayerName.showAndWait();
-<<<<<<< Updated upstream
         txtPlayer.setText(result.get());
-=======
         if(!result.get().isEmpty()){
             txtPlayer.setText(result.get());
             return result.get();
@@ -120,7 +118,6 @@ public class GameViewController implements Initializable {
             txtPlayer.setText("Spejderen");
             return "Spejderen";
         }
->>>>>>> Stashed changes
     }
 
     public String getResultAsString(Result result) {
