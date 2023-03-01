@@ -69,7 +69,7 @@ AnchorPane{
 }
 #lblWinLossTxt {
     -fx-font-family: "Comic Sans MS";
-    -fx-text-fill: yellow;
+    -fx-text-fill: #00ffe7;
     -fx-font-size: 50;
     -fx-text-alignment: center;
 }

@@ -4,6 +4,7 @@ package rps.gui.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -150,10 +151,10 @@ public class GameViewController implements Initializable {
         timeline.setOnFinished(event -> {
             if (winner == PlayerType.AI){
                 botWin();
-                lblWinLossTxt.setText("YOU LOSE!");
+                lblWinLossTxt.setText("YOU LOSE!!");
             } else if (winner == PlayerType.Human) {
                 playerWin();
-                lblWinLossTxt.setText("YOU WIN");
+                lblWinLossTxt.setText("YOU WIN!!");
             }
             enableButtons();
             clearImageTimer();
@@ -217,7 +218,7 @@ public class GameViewController implements Initializable {
             public void run() {
                 playerImage.setImage(transparent);
                 botImage.setImage(transparent);
-                lblWinLossTxt.setText("");
+                Platform.runLater(() -> lblWinLossTxt.setText(""));
             }
         };
         timer.schedule(task, 3000);

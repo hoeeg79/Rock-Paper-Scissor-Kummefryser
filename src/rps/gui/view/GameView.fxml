@@ -26,10 +26,10 @@
       </HBox>
       <ImageView fx:id="playerImage" fitHeight="260.0" fitWidth="330.0" layoutX="50.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="50.0" />
       <ImageView fx:id="botImage" fitHeight="260.0" fitWidth="330.0" layoutX="550.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="50.0" />
-       <Label fx:id="lblWin" layoutX="345.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" />
-       <Label fx:id="lblBotWin" layoutX="422.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" />
+       <Label fx:id="lblWin" layoutX="345.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" styleClass="scoreLabel" />
+       <Label fx:id="lblBotWin" layoutX="422.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" styleClass="scoreLabel" />
        <Label fx:id="txtPlayer" layoutX="50.0" layoutY="60.0" prefHeight="42.0" prefWidth="169.0" stylesheets="@CSS/GameSheet.css" text="Player 1" />
        <Label fx:id="txtBot" layoutX="423.0" layoutY="60.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
-       <Label fx:id="lblWinLossTxt" id="lblWinLossTxt" layoutX="233.0" layoutY="268.0" prefHeight="65.0" prefWidth="336.0" AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="268.0" />
+       <Label id="lblWinLossTxt" fx:id="lblWinLossTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="268.0" prefHeight="65.0" prefWidth="336.0" AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="268.0" />
    </children>
 </AnchorPane>
