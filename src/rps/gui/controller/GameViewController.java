@@ -13,11 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Collection;
 import java.util.List;
 
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.text.Text;
 import rps.bll.game.GameManager;
 import rps.bll.game.Move;
 import rps.bll.game.Result;
@@ -35,8 +33,10 @@ import java.util.ResourceBundle;
  */
 public class GameViewController implements Initializable {
 
-    public Label lblWin;
-    public Label lblBotLoss;
+    @FXML
+    private Label lblWin;
+    @FXML
+    private Label lblBotWin;
     @FXML
     private Label txtPlayer;
     @FXML
@@ -57,6 +57,8 @@ public class GameViewController implements Initializable {
 
     private Image scissorBot = new Image("ScissorBot.png");
     private String playerName = "";
+    private int playerWins = 0;
+    private int botWins = 0;
 
     IPlayer human = new Player(playerName, PlayerType.Human);
     IPlayer bot = new Player("Kummefryser Bot 3000", PlayerType.AI);
@@ -68,6 +70,8 @@ public class GameViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String playerName = getUserName();
+        lblWin.setText(String.valueOf(playerWins));
+        lblBotWin.setText(String.valueOf(botWins));
     }
     @FXML
     private void handleRock(ActionEvent actionEvent) {
@@ -76,8 +80,10 @@ public class GameViewController implements Initializable {
 
         if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
             climax(rockPlayer, paperBot);
+            botWin();
         } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
             climax(rockPlayer,scissorBot);
+            playerWin();
         }else {
             climax(rockPlayer, rockBot);
         }
@@ -90,22 +96,26 @@ public class GameViewController implements Initializable {
 
         if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
             climax(paperPlayer, scissorBot);
+            botWin();
         } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
             climax(paperPlayer,rockBot);
+            playerWin();
         }else {
             climax(paperPlayer, paperBot);
         }
     }
 
     @FXML
-    private void handleScissor(ActionEvent actionEvent) {
+    private void handleScissor(ActionEvent actionEvent) throws InterruptedException {
         gm.playRound(Move.Scissor);
         Result result = getLatestResult();
 
         if (result.getWinnerPlayer().getPlayerType() == PlayerType.AI){
             climax(scissorPlayer, rockBot);
+            botWin();
         } else if (result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
             climax(scissorPlayer,paperBot);
+            playerWin();
         }else {
             climax(scissorPlayer, scissorBot);
         }
@@ -161,5 +171,14 @@ public class GameViewController implements Initializable {
                 statusText + result.getLoserPlayer().getPlayerName() +
                 " (" + result.getLoserMove() + ")!";
 
+    }
+    private void botWin(){
+        botWins++;
+        lblBotWin.setText(String.valueOf(botWins));
+    }
+
+    private void playerWin(){
+        playerWins++;
+        lblWin.setText(String.valueOf(playerWins));
     }
 }
