@@ -68,3 +68,10 @@ AnchorPane{
     -fx-text-fill: #e600ff;
     -fx-font-size: 30;
 }
+
+.scoreLabel{
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #ff9225;
+    -fx-font-size: 30;
+
+}
