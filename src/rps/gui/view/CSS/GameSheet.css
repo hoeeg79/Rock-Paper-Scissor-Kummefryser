@@ -1,4 +1,6 @@
-
+AnchorPane{
+    -fx-background-image: url("/Lurendrejeren.png");
+}
 #btnRock
 {
     -fx-background-image: url("/RockPlayer.png");
@@ -57,11 +59,12 @@
 
 #txtPlayer{
     -fx-font-family: "Comic Sans MS";
-    -fx-text-fill: green;
+    -fx-text-fill: #f60505;
     -fx-font-size: 30;
+    -fx-background-size: contain;
 }
 #txtBot{
     -fx-font-family: "Comic Sans MS";
-    -fx-text-fill: yellow;
+    -fx-text-fill: #e600ff;
     -fx-font-size: 30;
 }

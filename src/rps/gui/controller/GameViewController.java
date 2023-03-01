@@ -56,6 +56,7 @@ public class GameViewController implements Initializable {
     private Image paperBot = new Image("PaperBot.png");
 
     private Image scissorBot = new Image("ScissorBot.png");
+    private Image transparent = new Image("transparent.png");
     private String playerName = "";
     private int playerWins = 0;
     private int botWins = 0;
@@ -180,5 +181,9 @@ public class GameViewController implements Initializable {
     private void playerWin(){
         playerWins++;
         lblWin.setText(String.valueOf(playerWins));
+    }
+
+    private void clearView(){
+        playerImage.setImage(transparent);
     }
 }
