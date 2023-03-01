@@ -53,3 +53,7 @@
     -fx-background-radius: 15;
     -fx-border-color: #4b4b4b;
 }
+
+label{
+    -fx-text-fill: yellow;
+}

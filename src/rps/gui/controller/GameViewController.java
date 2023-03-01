@@ -7,6 +7,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -28,8 +29,10 @@ import java.util.ResourceBundle;
  */
 public class GameViewController implements Initializable {
 
+    public Label lblWin;
+    public Label lblBotLoss;
     @FXML
-    private Text txtPlayer;
+    private Label txtPlayer;
     @FXML
     private ImageView playerImage;
     @FXML
@@ -99,5 +102,9 @@ public class GameViewController implements Initializable {
         }else{
             txtPlayer.setText("Spejderen");
         }
+    }
+
+    private void win(){
+        lblWin.
     }
 }
