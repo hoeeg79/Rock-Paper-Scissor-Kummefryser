@@ -217,9 +217,9 @@ public class GameViewController implements Initializable {
             public void run() {
                 playerImage.setImage(transparent);
                 botImage.setImage(transparent);
+                lblWinLossTxt.setText("");
             }
         };
         timer.schedule(task, 3000);
-
     }
 }

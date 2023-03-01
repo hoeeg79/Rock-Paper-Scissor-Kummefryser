@@ -29,7 +29,7 @@
        <Label fx:id="lblWin" layoutX="345.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" />
        <Label fx:id="lblBotWin" layoutX="422.0" layoutY="29.0" prefHeight="17.0" prefWidth="35.0" />
        <Label fx:id="txtPlayer" layoutX="50.0" layoutY="60.0" prefHeight="42.0" prefWidth="169.0" stylesheets="@CSS/GameSheet.css" text="Player 1" />
-       <Label layoutX="423.0" layoutY="60.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
+       <Label fx:id="txtBot" layoutX="423.0" layoutY="60.0" stylesheets="@CSS/GameSheet.css" text="Kummefryser bot 3000" />
        <Label fx:id="lblWinLossTxt" id="lblWinLossTxt" layoutX="233.0" layoutY="268.0" prefHeight="65.0" prefWidth="336.0" AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="268.0" />
    </children>
 </AnchorPane>
