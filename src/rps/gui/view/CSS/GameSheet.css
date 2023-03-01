@@ -55,8 +55,6 @@ AnchorPane{
     -fx-background-radius: 15;
     -fx-border-color: #4b4b4b;
 }
-
-
 #txtPlayer
 {
     -fx-font-family: "Comic Sans MS";
@@ -69,10 +67,14 @@ AnchorPane{
     -fx-text-fill: #e600ff;
     -fx-font-size: 30;
 }
-#lblWinLossTxt
-{
+#lblWinLossTxt {
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: yellow;
     -fx-font-size: 50;
     -fx-text-alignment: center;
+}
+.scoreLabel{
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #ff9225;
+    -fx-font-size: 30;
 }
