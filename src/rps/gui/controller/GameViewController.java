@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -35,6 +36,8 @@ import rps.bll.player.PlayerType;
  */
 public class GameViewController implements Initializable {
 
+    @FXML
+    private ToggleButton btnHard;
     @FXML
     private Label lblWinLossTxt;
     @FXML
@@ -83,6 +86,11 @@ public class GameViewController implements Initializable {
         String playerName = getUserName();
         lblWin.setText(String.valueOf(playerWins));
         lblBotWin.setText(String.valueOf(botWins));
+    }
+
+    @FXML
+    private void HandleHardMode(ActionEvent actionEvent) {
+        gm.toggleHardMode();
     }
 
     @FXML
@@ -183,7 +191,6 @@ public class GameViewController implements Initializable {
             return "Spejderen";
         }
     }
-
     public String getResultAsString(Result result) {
         String statusText = result.getType() == ResultType.Win ? "wins over " : "ties ";
 
@@ -193,6 +200,7 @@ public class GameViewController implements Initializable {
                 statusText + result.getLoserPlayer().getPlayerName() +
                 " (" + result.getLoserMove() + ")!";
     }
+
     private void botWin(){
         botWins++;
         lblBotWin.setText(String.valueOf(botWins));
