@@ -16,6 +16,7 @@ public class GameManager {
     private IGameState gameState;
     private IPlayer bot;
     private IPlayer human;
+    private boolean hardMode;
 
     /**
      * Initializes the GameManager with IPlayers
@@ -27,6 +28,7 @@ public class GameManager {
         gameState = new GameState(new ArrayList<>(), 1);
         this.human = human;
         this.bot = bot;
+        hardMode = false;
     }
 
     /**
@@ -35,7 +37,13 @@ public class GameManager {
      * @param human_move The next user move
      */
     public Result playRound(Move human_move) {
-        Move bot_move = bot.doMove(gameState); //ask the bot to make a move...
+        Move bot_move = null;
+        if (hardMode){
+            bot_move = bot.randomMove(gameState);
+        } else {
+            bot_move = bot.doMove(gameState); //ask the bot to make a move...
+        }
+                //bot.doMove(gameState); //ask the bot to make a move...
         Result result;
         int roundNumber = gameState.getRoundNumber();
 
@@ -62,5 +70,13 @@ public class GameManager {
      */
     public IGameState getGameState() {
         return gameState;
+    }
+
+    public void toggleHardMode(){
+        if (hardMode){
+            hardMode = false;
+        }else {
+            hardMode = true;
+        }
     }
 }

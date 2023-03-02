@@ -39,7 +39,7 @@ public class Player implements IPlayer {
         return type;
     }
 
-
+    @Override
     public Move randomMove(IGameState state) {
         Random random = new Random();
         int moveNo = random.nextInt(3);
