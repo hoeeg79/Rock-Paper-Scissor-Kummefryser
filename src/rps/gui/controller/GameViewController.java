@@ -99,11 +99,9 @@ public class GameViewController implements Initializable {
         if(hardMode){
             anchorPane.setStyle("-fx-background-image: url('/Lurendrejeren.png');");
             hardMode = false;
-            //btnHard.setText("Hard Mode Off");
         } else {
             anchorPane.setStyle("-fx-background-image: url('/LurendrejerenUdenBriller.png');");
             hardMode = true;
-            //btnHard.setText("Hard Mode On");
         }
     }
 
