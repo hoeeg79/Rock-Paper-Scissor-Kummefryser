@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -36,6 +37,8 @@ import rps.bll.player.PlayerType;
  */
 public class GameViewController implements Initializable {
 
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private ToggleButton btnHard;
     @FXML
@@ -73,6 +76,7 @@ public class GameViewController implements Initializable {
     private String playerName = "";
     private int playerWins = 0;
     private int botWins = 0;
+    private boolean hardMode;
 
     IPlayer human = new Player(playerName, PlayerType.Human);
     IPlayer bot = new Player("Kummefryser Bot 3000", PlayerType.AI);
@@ -86,11 +90,21 @@ public class GameViewController implements Initializable {
         String playerName = getUserName();
         lblWin.setText(String.valueOf(playerWins));
         lblBotWin.setText(String.valueOf(botWins));
+        hardMode = false;
     }
 
     @FXML
     private void HandleHardMode(ActionEvent actionEvent) {
         gm.toggleHardMode();
+        if(hardMode){
+            anchorPane.setStyle("-fx-background-image: url('/Lurendrejeren.png');");
+            hardMode = false;
+            //btnHard.setText("Hard Mode Off");
+        } else {
+            anchorPane.setStyle("-fx-background-image: url('/LurendrejerenUdenBriller.png');");
+            hardMode = true;
+            //btnHard.setText("Hard Mode On");
+        }
     }
 
     @FXML

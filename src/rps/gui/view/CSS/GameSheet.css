@@ -62,19 +62,31 @@ AnchorPane{
     -fx-font-size: 30;
     -fx-background-size: contain;
 }
-#txtBot{
+#txtBot
+{
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: #e600ff;
     -fx-font-size: 30;
 }
-#lblWinLossTxt {
+#lblWinLossTxt
+{
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: #00ffe7;
     -fx-font-size: 50;
     -fx-text-alignment: center;
 }
-.scoreLabel{
+.scoreLabel
+{
     -fx-font-family: "Comic Sans MS";
     -fx-text-fill: #ff9225;
     -fx-font-size: 30;
+}
+#btnHard
+{
+    -fx-background-color: transparent;
+}
+#btnHard:hover
+{
+    -fx-border-color: #eee206;
+    -fx-border-radius: 15;
 }
