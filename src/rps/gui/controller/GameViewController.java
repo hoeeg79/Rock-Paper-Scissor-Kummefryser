@@ -78,6 +78,9 @@ public class GameViewController implements Initializable {
     private int botWins = 0;
     private boolean hardMode;
 
+    private Media media;
+    private MediaPlayer mediaPlayer;
+
     IPlayer human = new Player(playerName, PlayerType.Human);
     IPlayer bot = new Player("Kummefryser Bot 3000", PlayerType.AI);
     private GameManager gm = new GameManager(human, bot);
@@ -99,9 +102,13 @@ public class GameViewController implements Initializable {
         if(hardMode){
             anchorPane.setStyle("-fx-background-image: url('/Lurendrejeren.png');");
             hardMode = false;
+            musicStop();
+            music();
         } else {
             anchorPane.setStyle("-fx-background-image: url('/LurendrejerenUdenBriller.png');");
             hardMode = true;
+            musicStop();
+            musicHardMode();
         }
     }
 
@@ -252,9 +259,23 @@ public class GameViewController implements Initializable {
 
     private void music(){
         //Local file music - change pathname
-        Media media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Abe.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Abe.mp3").toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
+    }
+
+    private void musicHardMode(){
+        //Local file music - change pathname
+        media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Aubergine.mp3").toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+    }
+
+    private void musicStop(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
     }
 }
