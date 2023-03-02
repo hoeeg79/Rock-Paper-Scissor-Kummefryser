@@ -12,8 +12,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.net.URL;
 import java.util.*;
 
@@ -81,6 +84,7 @@ public class GameViewController implements Initializable {
         lblWin.setText(String.valueOf(playerWins));
         lblBotWin.setText(String.valueOf(botWins));
     }
+
     @FXML
     private void handleRock(ActionEvent actionEvent) {
         gm.playRound(Move.Rock);
@@ -171,9 +175,11 @@ public class GameViewController implements Initializable {
         txtPlayer.setText(result.get());
         if(!result.get().isEmpty()){
             txtPlayer.setText(result.get());
+            music();
             return result.get();
         }else{
             txtPlayer.setText("Spejderen");
+            music();
             return "Spejderen";
         }
     }
@@ -222,5 +228,13 @@ public class GameViewController implements Initializable {
             }
         };
         timer.schedule(task, 3000);
+    }
+
+    private void music(){
+        //Local file music - change pathname
+        Media media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Abe.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 }
