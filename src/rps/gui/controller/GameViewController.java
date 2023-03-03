@@ -259,7 +259,7 @@ public class GameViewController implements Initializable {
 
     private void music(){
         //Local file music - change pathname
-        media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Abe.mp3").toURI().toString());
+        media = new Media(new File("/Users/lasse/Desktop/Musik til RPT/01 San Diego.mp3").toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
@@ -267,7 +267,7 @@ public class GameViewController implements Initializable {
 
     private void musicHardMode(){
         //Local file music - change pathname
-        media = new Media(new File("C:\\Users\\Bruger\\Downloads\\Aubergine.mp3").toURI().toString());
+        media = new Media(new File("/Users/lasse/Desktop/Musik til RPT/01 The Good, The Bad And The Ugly.m4a").toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
